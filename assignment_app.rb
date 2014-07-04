@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/json'
-require 'faker'
 require_relative 'models'
 
 def authenticate!(phone, pwd)
@@ -43,12 +42,4 @@ end
 get '/assignment/new/:booking_id' do
   lat, long = params[:lat], params[:long]
 
-end
-
-class Point
-  attr_accessor :lat, :lon
-  def initialize
-    @lat = Faker::Address.latitude
-    @lon = Faker::Address.longitude
-  end
 end

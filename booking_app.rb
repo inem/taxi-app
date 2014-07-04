@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/json'
 
-require_relative 'passenger_creator'
+require_relative 'factories'
 
 get '/passenger/new/:phone' do
   creator = PassengerCreator.new
