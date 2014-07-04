@@ -18,7 +18,7 @@ DB.create_table :bookings do
   primary_key :id
   String :passenger_id
   String :lat
-  String :long
+  String :lon
 end
 
 DB.create_table :assignments do
