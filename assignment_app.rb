@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sidekiq'
 require_relative 'models'
-require_relative 'factories'
+require_relative 'use_cases/assign_driver'
 
 def authenticate!(phone, pwd)
   p = Passenger.find_by_phone(phone)
@@ -43,7 +43,7 @@ end
 
 get '/assignment/new/:booking_id' do
   booking = Booking.find_by_id(params[:booking_id])
-  assign = AssignDriver.new(booking)
-  assign.commit!
-
+  use_case = AssignDriver.new
+  assignment = use_case.run!(booking)
+  json assignment.id
 end
