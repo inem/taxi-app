@@ -19,3 +19,12 @@ class PassengerCreator
     (0...8).map { ('a'..'z').to_a[rand(26)] }.join
   end
 end
+
+class DriversGenerator
+  def self.generate!(n)
+    n.times do
+      point = Point.new
+      Driver.create(:lat => point.lat, :lon => point.lon)
+    end
+  end
+end
