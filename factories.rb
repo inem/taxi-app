@@ -1,4 +1,5 @@
 require_relative "models"
+require_relative "sms_sender"
 
 class PassengerCreator
   def initialize(klass = Passenger)
@@ -23,15 +24,19 @@ end
 class AssignDriver
   def initialize(booking)
     @booking = booking
-    @driver = find_nearest_driver
+    @driver = find_nearest_driver(booking.lat, booking.lon)
   end
 
   def commit!
-    Assignment.create!(:booking_id => @booking.id, :driver_id => @driver.id)
+    assignment = Assignment.create!(:booking_id => @booking.id, :driver_id => @driver.id)
+    SmsSender.perform_async(@driver.phone)
+    assignment
   end
 
+  #fake implemetation
   def find_nearest_driver(lat, lon)
-    Driver.last #fake implemetation
+    offset = rand(Driver.count)
+    Driver.first(:offset => offset)
   end
 end
 
@@ -39,7 +44,7 @@ class DriversGenerator
   def self.generate!(n)
     n.times do
       point = Point.new
-      Driver.create(:lat => point.lat, :lon => point.lon)
+      Driver.create(:lat => point.lat, :lon => point.lon, :phone => Faker::PhoneNumber.phone_number)
     end
   end
 end
