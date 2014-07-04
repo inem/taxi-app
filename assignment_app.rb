@@ -40,6 +40,7 @@ get '/booking/details/:phone' do
 end
 
 get '/assignment/new/:booking_id' do
-  lat, long = params[:lat], params[:long]
-
+  booking = Booking.find_by_id(params[:booking_id])
+  assign = AssignDriver.new(booking)
+  assign.commit!
 end

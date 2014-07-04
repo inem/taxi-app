@@ -20,6 +20,21 @@ class PassengerCreator
   end
 end
 
+class AssignDriver
+  def initialize(booking)
+    @booking = booking
+    @driver = find_nearest_driver
+  end
+
+  def commit!
+    Assignment.create!(:booking_id => @booking.id, :driver_id => @driver.id)
+  end
+
+  def find_nearest_driver(lat, lon)
+    Driver.last #fake implemetation
+  end
+end
+
 class DriversGenerator
   def self.generate!(n)
     n.times do
