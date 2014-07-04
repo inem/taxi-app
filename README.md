@@ -11,6 +11,7 @@ TODO:
 Just realized that I get some requirements incorrectly.
 So:
 1. Password should be generated _based_ on phone → this will affect current authentication schema
+2. Create a booking as a passenger (the passenger needs to be authenticated with the correct system generated password)
 
 Setup
 =====
