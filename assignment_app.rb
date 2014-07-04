@@ -1,27 +1,18 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'sidekiq'
-require 'digest'
 require_relative 'models'
 require_relative 'use_cases/assign_driver'
 
-def authenticate!(phone)
-  passenger = Passenger.find_by_phone(phone)
-  unless passenger.password == Digest::MD5.hexdigest(phone)
-    status 403 and json('Not authorized')
-  end
-  passenger
-end
-
 get '/booking/:phone' do
-  passenger = authenticate!(params[:phone])
+  passenger = Passenger.find_by_phone(params[:phone])
 
   booking = Booking.find_all_by_passenger_id(passenger.id).last
   json booking.id
 end
 
 get '/booking/details/:phone' do
-  passenger = authenticate!(params[:phone])
+  passenger = Passenger.find_by_phone(params[:phone])
 
   booking = Booking.find_all_by_passenger_id(passenger.id).last
   assignment = Assignment.find_all_by_booking_id(booking.id).last

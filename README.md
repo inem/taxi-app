@@ -36,7 +36,7 @@ get passenger password:
   http://localhost:4567/passenger/pwd/8923749824
 
 create booking:
-  http://localhost:4567/booking/create/8923749824
+  http://localhost:4567/booking/create/__password__
 
 
 
@@ -44,12 +44,12 @@ Assignment app API
 ==================
 
 get booking id by phone number:
-  http://localhost:4568/booking/8923749824?pwd=_____
+  http://localhost:4568/booking/8923749824
 
 get booking details by phone number:
-  http://localhost:4568/booking/details/8923749824?pwd=_____
+  http://localhost:4568/booking/details/8923749824
 
-create booking:
+create assignment:
   http://localhost:4568/assignment/new/__booking_id__
 
 
