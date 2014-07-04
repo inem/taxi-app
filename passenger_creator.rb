@@ -1,5 +1,4 @@
-require "sequel"
-require_relative "db"
+require_relative "models"
 
 class PassengerCreator
   def new(klass = Passenger)
