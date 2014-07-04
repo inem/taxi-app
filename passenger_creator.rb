@@ -1,12 +1,12 @@
 require_relative "models"
 
 class PassengerCreator
-  def new(klass = Passenger)
+  def initialize(klass = Passenger)
     @klass = klass
   end
 
   def create(phone)
-    passenger = @klass.find(phone)
+    passenger = @klass.find_by_phone(phone)
     unless passenger
       passenger = @klass.create(phone: phone, password: generate_password)
     end
