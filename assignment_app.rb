@@ -19,13 +19,6 @@ get '/booking/:phone' do
   json booking.id
 end
 
-get '/booking/id/:phone' do
-  passenger = authenticate!(params[:phone], params[:pwd])
-
-  booking = Booking.find_all_by_passenger_id(passenger.id).last
-  json booking.id
-end
-
 get '/booking/details/:phone' do
   passenger = authenticate!(params[:phone], params[:pwd])
 
