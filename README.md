@@ -6,12 +6,6 @@ Rake task is simple one-liner
 
 Implementation is naive and doesn't cover lots of edge cases. Authentication is also primitive - you just pass password as plain text.
 
-TODO:
-====
-Just realized that I get some requirements incorrectly.
-So:
-1. Password should be generated _based_ on phone → this will affect current authentication schema
-2. Create a booking as a passenger (the passenger needs to be authenticated with the correct system generated password)
 
 Setup
 =====
@@ -36,7 +30,7 @@ get passenger password:
   http://localhost:4567/passenger/pwd/8923749824
 
 create booking:
-  http://localhost:4567/booking/create/__password__
+  http://localhost:4567/booking/create/8e4d782b73dd3a6dfca6e0be74e24559
 
 
 
