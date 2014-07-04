@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/json'
+require 'sidekiq'
 require_relative 'models'
+require_relative 'factories'
 
 def authenticate!(phone, pwd)
   p = Passenger.find_by_phone(phone)
@@ -43,4 +45,5 @@ get '/assignment/new/:booking_id' do
   booking = Booking.find_by_id(params[:booking_id])
   assign = AssignDriver.new(booking)
   assign.commit!
+
 end
