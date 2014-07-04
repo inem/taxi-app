@@ -1,4 +1,14 @@
 require 'sinatra'
+require 'sinatra/json'
+require_relative 'models'
+
+def authenticate!(phone, pwd)
+  p = Passenger.find_by_phone(phone)
+  unless p.password == pwd
+    status 403 && json 'Not authorized'
+  end
+  p
+end
 
 post '/booking/create/:phone' do
 
