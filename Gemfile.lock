@@ -17,6 +17,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    backports (3.6.0)
     builder (3.1.4)
     encrypted_attributes (0.4.1)
       encrypted_strings (>= 0.3.3)
@@ -27,11 +28,21 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
     sequel (4.12.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra-contrib (1.4.2)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
+    sqlite3 (1.3.8)
     thread_safe (0.3.4)
     tilt (1.4.1)
     tzinfo (0.3.39)
@@ -44,3 +55,5 @@ DEPENDENCIES
   encrypted_attributes
   sequel
   sinatra
+  sinatra-contrib
+  sqlite3
