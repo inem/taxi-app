@@ -5,6 +5,7 @@ class CreateBooking
   def run!(passenger, lat, lon)
     booking = Booking.create(:passenger_id => passenger.id, :lat => lat, :lon => lon)
     assignment_callback(booking.id)
+    booking
   end
 
   private

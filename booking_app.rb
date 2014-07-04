@@ -22,7 +22,7 @@ get '/booking/create/:phone' do
   point = Point.new #pseudo coordinates of passenger
 
   use_case = CreateBooking.new
-  use_case.run!(passenger, point.lat, point.lon)
+  booking = use_case.run!(passenger, point.lat, point.lon)
 
   json booking.id
 end
