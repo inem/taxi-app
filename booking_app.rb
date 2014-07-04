@@ -10,6 +10,8 @@ get '/passenger/new/:phone' do
   json passenger.id
 end
 
-get '/pwd/:phone' do
+get '/passenger/pwd/:phone' do
+  passenger = Passenger.find_by_phone(params[:phone])
 
+  json passenger.password
 end
