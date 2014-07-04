@@ -12,6 +12,7 @@ DB.create_table :drivers do
   primary_key :id
   String :lat
   String :lon
+  String :phone
 end
 
 DB.create_table :bookings do
