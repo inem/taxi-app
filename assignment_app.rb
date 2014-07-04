@@ -12,14 +12,6 @@ def authenticate!(phone, pwd)
   p
 end
 
-get '/booking/create/:phone' do
-  passenger = authenticate!(params[:phone], params[:pwd])
-  point = Point.new
-
-  booking = Booking.create(:passenger_id => passenger.id, :lat => point.lat, :lon => point.lon)
-  json booking.id
-end
-
 get '/booking/:phone' do
   passenger = authenticate!(params[:phone], params[:pwd])
 
