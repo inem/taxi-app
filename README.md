@@ -11,9 +11,6 @@ TODO:
 Just realized that I get some requirements incorrectly.
 So:
 1. Password should be generated _based_ on phone → this will affect current authentication schema
-2. Drivers should have name
-3. Details of booking should include driver name and phone
-
 
 Setup
 =====

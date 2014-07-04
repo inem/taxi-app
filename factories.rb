@@ -24,7 +24,10 @@ class DriversGenerator
   def self.generate!(n)
     n.times do
       point = Point.new
-      Driver.create(:lat => point.lat, :lon => point.lon, :phone => Faker::PhoneNumber.phone_number)
+      Driver.create(:lat => point.lat,
+                    :lon => point.lon,
+                    :phone => Faker::PhoneNumber.phone_number,
+                    :name => Faker::Name.name)
     end
   end
 end

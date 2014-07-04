@@ -23,7 +23,10 @@ get '/booking/details/:phone' do
   passenger = authenticate!(params[:phone], params[:pwd])
 
   booking = Booking.find_all_by_passenger_id(passenger.id).last
-  json booking
+  assignment = Assignment.find_all_by_booking_id(booking.id).last
+  driver = Driver.find_by_id(assignment.driver_id)
+
+  json :driver_name => driver.name, :driver_phone => driver.phone
 end
 
 get '/assignment/new/:booking_id' do
