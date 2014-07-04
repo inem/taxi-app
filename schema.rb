@@ -16,7 +16,7 @@ end
 
 DB.create_table :bookings do
   primary_key :id
-  String :passenger_phone
+  String :passenger_id
   String :lat
   String :long
 end
