@@ -1,11 +1,9 @@
 require 'active_record'
-require 'encrypted_attributes'
+require 'crypt_keeper'
 ActiveRecord::Base.establish_connection({:adapter => "sqlite3", :database => 'taxi.db'})
 
 class Passenger < ActiveRecord::Base
-  encrypts :password, :mode => :sha do |user|
-    {:salt => "#{user.phone}-#{Time.now}", :embed_salt => true}
-  end
+  crypt_keeper :password, :encryptor => :aes_new, :key => 'super_good_password', salt: 'salt'
 end
 
 class Driver < ActiveRecord::Base

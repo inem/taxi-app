@@ -4,8 +4,8 @@ DB = Sequel.sqlite('taxi.db')
 DB.create_table :passengers do
   primary_key :id
   String :phone
-  String :password
-  String :salt
+  Text :password
+  Text :salt
 end
 
 DB.create_table :drivers do
