@@ -15,3 +15,8 @@ end
 get '/booking/details/:phone' do
 
 end
+
+get '/assignment/new/:booking_id' do
+  lat, long = params[:lat], params[:long]
+
+end
