@@ -47,4 +47,10 @@ create assignment:
   http://localhost:4568/assignment/new/__booking_id__
 
 
+What can be improved:
+=====================
 
+* Make use of AR associations
+* Implement real nearest driver search
+* Tests
+* Organize everything properly in separate files and folders
